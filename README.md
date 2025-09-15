@@ -1,19 +1,28 @@
-# wind-data-example
+# Offshore Wind Farm Simulation
 
-Minimal, public-safe example showing how I manage, compile and visualise data in Python.
-The script creates a **toy** weather grid (u,v winds), interpolates to turbine positions
-using a KDTree with inverse-distance weights, simulates power via a tabular power curve,
-aggregates to “park” level, computes RMSE/MAE versus synthetic “observations”, and saves CSVs.
+This repository contains Python code I developed during my Master’s Thesis at the University of Liège,
+focusing on predictive modeling of Belgian offshore wind farms.
 
-## What this demonstrates
-- Data loading/creation, cleaning and alignment (pandas/xarray)
-- Spatial interpolation with KDTree (scipy)
-- Simple power-curve based simulation (numpy)
-- Aggregation & metrics (pandas, scikit-learn)
-- Visualisation (matplotlib)
+The code:
+- Loads weather datasets (NetCDF format, e.g. ERA5)
+- Interpolates wind conditions from grid points to turbine coordinates using KDTree
+- Simulates turbine power output via tabular power curves
+- Aggregates production to park level
+- Computes metrics (RMSE, MAE, bias) against real production
+- Saves turbine- and park-level outputs to CSV
 
-## Run locally
+⚠️ Real production and weather datasets are **not included** due to confidentiality.  
+The code remains executable if you provide your own datasets in the expected format.
+
+---
+
+## Structure
+- `simulation/models.py` – turbine models and specs
+- `simulation/interpolate.py` – spatial interpolation
+- `simulation/simulate.py` – simulation pipeline
+- `simulation/run.py` – yearly batch runs
+- `examples/example_run.py` – usage demo with placeholders
+
+## Install
 ```bash
-python -m venv .venv && . .venv/bin/activate  # on Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-python wind_data_example.py
