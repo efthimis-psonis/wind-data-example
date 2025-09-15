@@ -2,6 +2,8 @@ numpy
 pandas
 xarray
 scipy
-matplotlib
 tqdm
 scikit-learn
+pyproj
+py_wake
+matplotlib
